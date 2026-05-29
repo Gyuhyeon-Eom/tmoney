@@ -544,7 +544,7 @@ def gen_d012_chunk(chunk_size, start_seq, total_n):
     return pd.DataFrame(rows)
 
 
-def gen_d012(total=20000000, chunk_size=500000):
+def gen_d012(total=60000000, chunk_size=1000000):
     """요금정보 1,000,000건 (chunked)"""
     print(f"  D012 요금정보 ({total:,}건, chunk={chunk_size:,})...")
     fpath = os.path.join(OUTPUT_DIR, 'DC_TBYXD012.csv')
@@ -705,7 +705,7 @@ def gen_h002_chunk(chunk_size, start_seq):
     return pd.DataFrame(rows)
 
 
-def gen_h002(total=60000000, chunk_size=1000000):
+def gen_h002(total=20000000, chunk_size=1000000):
     """위치정보 3,000,000건 (chunked)"""
     print(f"  H002 위치정보 ({total:,}건, chunk={chunk_size:,})...")
     fpath = os.path.join(OUTPUT_DIR, 'DC_TBYXH002.csv')
@@ -940,8 +940,8 @@ if __name__ == '__main__':
     del df_s005
 
     # 4. 대용량 테이블 (chunked)
-    n_d012 = gen_d012(20000000, chunk_size=500000)
-    n_h002 = gen_h002(60000000, chunk_size=1000000)
+    n_d012 = gen_d012(60000000, chunk_size=1000000)
+    n_h002 = gen_h002(20000000, chunk_size=1000000)
 
     # 5. 결과 보고
     elapsed = time.time() - t_start
