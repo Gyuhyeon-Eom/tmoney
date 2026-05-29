@@ -961,7 +961,7 @@ if __name__ == '__main__':
         if os.path.exists(fpath):
             size_mb = os.path.getsize(fpath) / (1024 * 1024)
             # Count lines (subtract 1 for header)
-            with open(fpath, 'r') as f:
+            with open(fpath, 'r', encoding='utf-8-sig') as f:
                 line_count = sum(1 for _ in f) - 1
             print(f"  {fname:25s} {line_count:>12,}건  ({size_mb:>8.1f} MB)")
             total_rows += line_count
